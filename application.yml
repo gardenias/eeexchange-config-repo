@@ -1,0 +1,200 @@
+spring:
+  main:
+    allow-bean-definition-overriding: true
+  cloud:
+    config:
+#      prefix: ${spring.cloud.config.uri}/${spring.cloud.config.name}/${spring.cloud.config.profile}/${spring.cloud.config.label}
+      enabled: false
+      name: ${spring.application.name}
+      profile: ${spring.profiles.active}
+      allowOverride: true
+      overrideSystemProperties: false
+      discovery:
+        enabled: false
+        service-id: config-server
+      i18n: en_US,zh_CN,ko_KR,ja_JP,zh_TW,id_ID
+
+management:
+  endpoint:
+    health:
+      show-details: always
+      enabled: true
+    prometheus:
+      id: springmetrics
+    metrics:
+      enabled: true
+  endpoints:
+    health:
+      sensitive: false
+    web:
+      exposure:
+        include: health,info,env,prometheus,metrics,httptrace,springmetrics
+  metrics:
+    export:
+      prometheus:
+        enabled: true
+    datadog:
+      hostname: datadog.wtex.us
+      port: 8125
+      enable: false
+    tags:
+      application: ${spring.application.name}
+
+statsd:
+  hostname: datadog.wtex.us
+  port: 8125
+  enable: false
+  constantTags:
+    - biz:test
+    - app:${APP_NAME:app}
+    - env:${ENV:NOT_SET}
+    - host:${HOSTNAME:NOT_SET}
+
+
+logging:
+  config: ${spring.cloud.config.prefix}/logback/logback.xml
+
+application.properties: here
+
+info:
+  app:
+    name: ${APP_NAME:app}
+    env: ${ENV:NOT_SET}
+    hostname: ${HOSTNAME:NOT_SET}
+    gen: ${GEN:-1}
+    seq: ${SEQ:-1}
+
+var:
+  kafka:
+    instance:
+      default:
+        servers: 127.0.0.1:9092
+      log:
+        servers: kafkalog-collector:9092
+      switcher:
+        servers: 127.0.0.1:9092
+    auth:
+      clearing:
+        username: clearing-engine
+        password: 123456
+      match:
+        username: match-engine
+        password: 654321
+      default:
+        username: clearing-engine
+        password: 123456
+      switcher:
+        username: clearing-engine
+        password: 123456
+    topic:
+      clearing-command: ${info.app.env}.spot.clearing-command
+      clearing-result: ${info.app.env}.spot.clearing-result
+      clearing-response: ${info.app.env}.spot.clearing-response
+      match-command: ${info.app.env}.spot.match-command
+      match-result: ${info.app.env}.spot.match-result
+      switcher-order-march: ${info.app.env}.switcher.order-match
+
+  redis:
+    instance:
+      default:
+        host: 127.0.0.1
+        port: 6311
+    auth:
+      default:
+        password:
+    database:
+      clearing: 1
+      config: 1
+      order: 2
+      account: 3
+      quot: 5
+
+  mysql:
+    instance:
+      default:
+        host: 127.0.0.1
+        port: 3301
+    auth:
+      default:
+        username:
+        password:
+    database:
+      default:
+
+gateway:
+  security:
+    sign:
+      gateway_v1:
+        accessKey: abcdef
+        secretKey: '123456'
+        scope: scope/region/service
+
+security:
+  sign:
+    server:
+      gateway_v1:
+        accessKey: abcdef
+        secretKey: '123456'
+        scope: scope/region/service
+
+swagger:
+  enable: true
+
+error:
+  codes:
+
+    #config
+    config.currency-not-found: 1001
+    config.symbol-not-found: 1002
+    config.config-key-not-found: 1006
+    config.config-value-invalid: 1007
+
+    #clearing
+    account.insufficient-available: 1101
+    account.insufficient-withdrawable: 1102
+    account.withdraw-amount-limit: 1103
+    account.account-not-found: 1104
+    account.user-id-not-match: 1105
+    dedup.duplicated-request-id: 1101
+    command.max-time-violation: 1301
+
+    #system
+    common.system-error: 1301
+    common.timeout-error: 1302
+    common.class-cast-error: 1303
+    common.no-value-present: 1304
+    common.json-error: 1305
+
+    #api error
+    api.bad-request: 1400
+    api.unauthorized: 1401
+    api.forbidden: 1403
+    api.not-found: 1404
+    api.method-not-allowed: 1405
+    api.too-many-requests: 1429
+    api.internal-server-error: 1500
+
+    #auth
+    auth.user-id-required: 1601
+    auth.account-id-required: 1601
+    auth.auth-type-required: 1601
+
+    #sign
+    sign.no-such-algorithm: 1701
+    sign.invalid-key: 1702
+    sign.access-key-missing: 1703
+    sign.secret-key-missing: 1704
+    sign.signature-not-match: 1705
+    sign.signed-header-not-found: 1706
+    sign.invalid-signature-timestamp: 1707
+    sign.invalid-signature-algorithm: 1708
+    sign.invalid-signature-credential: 1709
+
+    #synstem(kafka)
+    stream.command-prepare-error: 1901
+    stream.command-send-fail: 1902
+    stream.result-not-found: 1903
+
+
+
+

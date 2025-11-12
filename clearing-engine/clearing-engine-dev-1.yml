@@ -1,0 +1,12 @@
+var:
+  redis:
+    instance:
+      clearing-engine:
+        host: 127.0.0.1
+        port: 6379
+    auth:
+      clearing-engine:
+        password:
+    database:
+      clearing-engine: 2
+      clearing: 3

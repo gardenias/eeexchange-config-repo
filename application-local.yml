@@ -1,0 +1,234 @@
+logback:
+  kafka:
+    enable: false
+    topic: cs-spot-logs
+  console:
+    enable: true
+
+var:
+  kafka:
+    instance:
+      default:
+        servers: localhost:9092
+      log:
+        servers: localhost:9092
+      switcher:
+        servers: localhost:9092
+    auth:
+      clearing:
+        username: ''
+        password: ''
+      match:
+        username: ''
+        password: ''
+      default:
+        username: ''
+        password: ''
+      msg:
+        username: ''
+        password: ''
+    topic:
+      msg-command-1: ${info.app.env}.spot.msg-command-1
+      msg-command-5: ${info.app.env}.spot.msg-command-5
+      msg-command-10: ${info.app.env}.spot.msg-command-10
+
+  redis:
+    instance:
+      default:
+        host: localhost
+        port: 6311
+      order:
+        host: localhost
+        port: 6311
+      kyc:
+        host: localhost
+        port: 6311
+      uc:
+        host: localhost
+        port: 6311
+      quot:
+        host: localhost
+        port: 6311
+      swap-config:
+        host: localhost
+        port: 6312
+      cluster:
+        nodes: localhost:6301,localhost:6302,localhost:6303,localhost:6304,localhost:6305,localhost:6306
+    auth:
+      default:
+        password: p78GS3hMT4mw2TGJZt
+      order:
+        password: p78GS3hMT4mw2TGJZt
+      kyc:
+        password: p78GS3hMT4mw2TGJZt
+      uc:
+        password: p78GS3hMT4mw2TGJZt
+      quot:
+        password: p78GS3hMT4mw2TGJZt
+      cluster:
+        password: p78GS3hMT4mw2TGJZt
+    database:
+      sync: 14
+      clearing: 13
+      config: 13
+      order: 6
+      auth: 10
+      quot: 5
+      kyc: 9
+      uc: 0
+      swap-config: 0
+      swap-asset: 14
+
+  mysql:
+    instance:
+      coinBull:
+        host: localhost
+        port: 3301
+      spot:
+        host: localhost
+        port: 3301
+      default:
+        host: localhost
+        port: 3301
+      statistics:
+        host: localhost
+        port: 3301
+      account:
+        host: localhost
+        port: 3301
+      turing:
+        host: localhost
+        port: 3301
+      otc:
+        host: localhost
+        port: 3301
+      business:
+        host: localhost
+        port: 3301
+
+    auth:
+      wallet:
+        username: turing_user
+        password: QtLPOsSPMBkDEWiM3A
+      default:
+        username: turing_user
+        password: QtLPOsSPMBkDEWiM3A
+      statistics:
+        username: turing_user
+        password: QtLPOsSPMBkDEWiM3A
+      config-x:
+        username: turing_user
+        password: QtLPOsSPMBkDEWiM3A
+      turing:
+        username: turing_user
+        password: QtLPOsSPMBkDEWiM3A
+      otc:
+        username: turing_user
+        password: QtLPOsSPMBkDEWiM3A
+      business:
+        username: turing_user
+        password: QtLPOsSPMBkDEWiM3A
+    database:
+      default: turing
+      config-x: turing_config_x_db
+      turing: turing
+      otc: turing_otc
+      business: swap_business
+
+gateway:
+  security:
+    sign:
+      gateway_v1:
+        accessKey: ${var.security.sign.gateway_v1.accessKey}
+        secretKey: ${var.security.sign.gateway_v1.secretKey}
+        scope: ${var.security.sign.gateway_v1.scope}
+      gateway_v2:
+        accessKey: ${var.security.sign.gateway_v2.accessKey}
+        secretKey: ${var.security.sign.gateway_v2.secretKey}
+        scope: ${var.security.sign.gateway_v2.scope}
+
+security:
+  sign:
+    server:
+      gateway_v1:
+        accessKey: ${var.security.sign.gateway_v1.accessKey}
+        secretKey: ${var.security.sign.gateway_v1.secretKey}
+        scope: ${var.security.sign.gateway_v1.scope}
+      gateway_v2:
+        accessKey: ${var.security.sign.gateway_v2.accessKey}
+        secretKey: ${var.security.sign.gateway_v2.secretKey}
+        scope: ${var.security.sign.gateway_v2.scope}
+future.client.tokencheck:
+  wbf:
+    isOpen: false
+    url:
+    appkey:
+  coinstore:
+    isOpen: true
+    url: http://uc-server-svc.coinstore-stage:38080
+    appId: 1597657007
+    secret: StO1j4YciyJpi6g3yxdIH3tLVZgwteqT
+    #万能签名，生产上不用配置参数
+    defaultSign: 111111
+    masterApiKeyList:
+      - 'apiKey': da4954e81bbdfecaf6c2dc94bda21d2b
+        'userid':
+        'ips':
+      - 'apiKey': 2d59d2806b0aaa217d5f9c6278a23773
+        'userid':
+        'ips':
+      - 'apiKey': cb042534a78d8f4c2235dceeb58a6c19
+        'userid':
+        'ips':
+      - 'apiKey': 9e857997dae5734113e3a1369f10a262
+        'userid':
+        'ips':
+      - 'apiKey': fc7e041aa301518e0c0f69ae97a5f3a0
+        'userid':
+        'ips':
+    apiKeyList:
+      - 'apiKey': 76bb9a9bd7f7f36d2124dfc104f6d9528bbb4f85c942b6a83710f0ae18ec09ed
+        'userid': 135
+        'ips':
+      - 'apiKey': a5b8397700ef6e49cf139273a54289420180bdfc3bfc836a3a7630172754a951
+        'userid': 100219690346
+        'ips':
+      - 'apiKey': 4139fe2e-7ee3-4f4b-bb1b-cee40d0568e5
+        'userid': 100656966162
+        'ips':
+      - 'apiKey': bfab382b58494473beabc23b0d45a93a4434fc924b0f6cee47346ae355
+        'userid': 100719071174
+        'ips':
+      - 'apiKey': 100000000001
+        'userid': 100000000001
+        'ips':
+      - 'apiKey': 100000000002
+        'userid': 100000000002
+        'ips':
+      - 'apiKey': 100000000003
+        'userid': 100000000003
+        'ips':
+      - 'apiKey': 100000000004
+        'userid': 100000000004
+        'ips':
+      - 'apiKey': 100000000005
+        'userid': 100000000005
+        'ips':
+      - 'apiKey': 100000000006
+        'userid': 100000000006
+        'ips':
+      - 'apiKey': 100000000007
+        'userid': 100000000007
+        'ips':
+      - 'apiKey': 100000000008
+        'userid': 100000000008
+        'ips':
+      - 'apiKey': 100000000009
+        'userid': 100000000009
+        'ips':
+      - 'apiKey': 100000000010
+        'userid': 100000000010
+        'ips':
+      - 'apiKey': 2f1b331532ea005aa72b3ae6097edd2a0b2af889977b199fedeb427c02112bed
+        'userid': 36310276290642235
+        'ips':

@@ -1,0 +1,37 @@
+spring:
+  kafka:
+    bootstrapServers: ${var.kafka.instance.default.servers}
+
+wbf:
+  kafka:
+    servers: ${var.kafka.instance.default.servers}
+    username: ${var.kafka.auth.default.username}
+    password: ${var.kafka.auth.default.password}
+
+    input:
+      match-command:
+        topic:  ${var.kafka.topic.match-command}
+        groupId: ${info.app.env}.match_engine
+      match-result:
+        topic: ${var.kafka.topic.match-result}
+    output:
+      match-result:
+        topic: ${var.kafka.topic.match-result}
+      clearing-command:
+        topic: ${var.kafka.topic.clearing-command}
+
+  redis:
+    match-engine:
+      host: ${var.redis.instance.match-engine.host}
+      port: ${var.redis.instance.match-engine.port}
+      database: ${var.redis.database.match-engine}
+      password: ${var.redis.auth.match-engine.password}
+    match-sync:
+      host: ${var.redis.instance.default.host}
+      port: ${var.redis.instance.default.port}
+      database: ${var.redis.database.sync}
+      password: ${var.redis.auth.default.password}
+    quot-replicator:
+      host: ${var.redis.instance.quot.host}
+      port: ${var.redis.instance.quot.port}
+      database: ${var.redis.database.quot}

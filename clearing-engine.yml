@@ -1,0 +1,39 @@
+spring:
+  kafka:
+    bootstrapServers: ${var.kafka.instance.default.servers}
+
+wbf:
+  clearing-engine:
+    fastFail: true
+
+  kafka:
+    servers: ${var.kafka.instance.default.servers}
+    username: ${var.kafka.auth.default.username}
+    password: ${var.kafka.auth.default.password}
+
+    input:
+      clearing-command:
+        topic: ${var.kafka.topic.clearing-command}
+        groupId: ${info.app.env}.clearing_engine
+    output:
+      clearing-command:
+        topic: ${var.kafka.topic.clearing-command}
+      clearing-result:
+        topic: ${var.kafka.topic.clearing-result}
+      clearing-response:
+        topic:  ${var.kafka.topic.clearing-response}
+      match-command:
+        topic:  ${var.kafka.topic.match-command}
+
+  redis:
+    clearing-engine:
+      host: ${var.redis.instance.clearing-engine.host}
+      port: ${var.redis.instance.clearing-engine.port}
+      database: ${var.redis.database.clearing-engine}
+      password: ${var.redis.auth.clearing-engine.password}
+    clearing-result:
+      host: ${var.redis.instance.default.host}
+      port: ${var.redis.instance.default.port}
+      database: ${var.redis.database.clearing}
+      password: ${var.redis.auth.default.password}
+

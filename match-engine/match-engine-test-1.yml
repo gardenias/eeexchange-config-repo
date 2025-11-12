@@ -1,0 +1,11 @@
+var:
+  redis:
+    instance:
+      match-engine:
+        host: 127.0.0.1
+        port: 6379
+    auth:
+      match-engine:
+        password:
+    database:
+      match-engine: 9
