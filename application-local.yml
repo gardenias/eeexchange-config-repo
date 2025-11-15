@@ -36,37 +36,37 @@ var:
     instance:
       default:
         host: localhost
-        port: 6311
+        port: 6380
       order:
         host: localhost
-        port: 6311
+        port: 6380
       kyc:
         host: localhost
-        port: 6311
+        port: 6380
       uc:
         host: localhost
-        port: 6311
+        port: 6380
       quot:
         host: localhost
-        port: 6311
+        port: 6380
       swap-config:
         host: localhost
-        port: 6312
+        port: 6379
       cluster:
-        nodes: localhost:6301,localhost:6302,localhost:6303,localhost:6304,localhost:6305,localhost:6306
+        nodes: localhost:7001,localhost:7002,localhost:7003,localhost:7004,localhost:7005,localhost:7006
     auth:
       default:
-        password: p78GS3hMT4mw2TGJZt
+        password:
       order:
-        password: p78GS3hMT4mw2TGJZt
+        password:
       kyc:
-        password: p78GS3hMT4mw2TGJZt
+        password:
       uc:
-        password: p78GS3hMT4mw2TGJZt
+        password:
       quot:
-        password: p78GS3hMT4mw2TGJZt
+        password:
       cluster:
-        password: p78GS3hMT4mw2TGJZt
+        password:
     database:
       sync: 14
       clearing: 13
@@ -83,51 +83,51 @@ var:
     instance:
       coinBull:
         host: localhost
-        port: 3301
+        port: 3306
       spot:
         host: localhost
-        port: 3301
+        port: 3306
       default:
         host: localhost
-        port: 3301
+        port: 3306
       statistics:
         host: localhost
-        port: 3301
+        port: 3306
       account:
         host: localhost
-        port: 3301
+        port: 3306
       turing:
         host: localhost
-        port: 3301
+        port: 3306
       otc:
         host: localhost
-        port: 3301
+        port: 3306
       business:
         host: localhost
-        port: 3301
+        port: 3306
 
     auth:
       wallet:
-        username: turing_user
-        password: QtLPOsSPMBkDEWiM3A
+        username: root
+        password: 8qgvq6r1yms9
       default:
-        username: turing_user
-        password: QtLPOsSPMBkDEWiM3A
+        username: root
+        password: 8qgvq6r1yms9
       statistics:
-        username: turing_user
-        password: QtLPOsSPMBkDEWiM3A
+        username: root
+        password: 8qgvq6r1yms9
       config-x:
-        username: turing_user
-        password: QtLPOsSPMBkDEWiM3A
+        username: root
+        password: 8qgvq6r1yms9
       turing:
-        username: turing_user
-        password: QtLPOsSPMBkDEWiM3A
+        username: root
+        password: 8qgvq6r1yms9
       otc:
-        username: turing_user
-        password: QtLPOsSPMBkDEWiM3A
+        username: root
+        password: 8qgvq6r1yms9
       business:
-        username: turing_user
-        password: QtLPOsSPMBkDEWiM3A
+        username: root
+        password: 8qgvq6r1yms9
     database:
       default: turing
       config-x: turing_config_x_db

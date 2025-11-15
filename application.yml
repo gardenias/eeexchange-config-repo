@@ -3,7 +3,7 @@ spring:
     allow-bean-definition-overriding: true
   cloud:
     config:
-#      prefix: ${spring.cloud.config.uri}/${spring.cloud.config.name}/${spring.cloud.config.profile}/${spring.cloud.config.label}
+      prefix: ${spring.cloud.config.uri}/${spring.cloud.config.name}/${spring.cloud.config.profile}/${spring.cloud.config.label}
       enabled: false
       name: ${spring.application.name}
       profile: ${spring.profiles.active}
@@ -51,8 +51,8 @@ statsd:
     - host:${HOSTNAME:NOT_SET}
 
 
-logging:
-  config: ${spring.cloud.config.prefix}/logback/logback.xml
+#logging:
+#  config: ${spring.cloud.config.prefix}/logback/logback.xml
 
 application.properties: here
 
